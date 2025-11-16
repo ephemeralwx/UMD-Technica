@@ -1,0 +1,43 @@
+{
+  "command_number": 11,
+  "command_text": "Click on the search bar in the top middle of the screen",
+  "timestamp": "2025-11-15T19:55:39.533001",
+  "parsed_action": {
+    "type": "click",
+    "target": "Click on the search bar in the top middle of the screen"
+  },
+  "screenshot_path": "command_logs/command_11/screenshot.png",
+  "vlm_request": {
+    "instruction": "Click on the search bar in the top middle of the screen",
+    "screenshot_size": "1024x665",
+    "model": "microsoft/GUI-Actor-2B-Qwen2-VL",
+    "topk": 3
+  },
+  "vlm_response": {
+    "topk_points": [
+      {
+        "x": 0.4584993580028626,
+        "y": 0.15697283878504673
+      }
+    ]
+  },
+  "predicted_points": [
+    {
+      "x": 0.4584993580028626,
+      "y": 0.15697283878504673
+    }
+  ],
+  "selected_point": {
+    "normalized": {
+      "x": 0.4584993580028626,
+      "y": 0.15697283878504673
+    },
+    "pixel": {
+      "x": 469,
+      "y": 104
+    }
+  },
+  "execution_result": null,
+  "errors": [],
+  "debug_screenshot_path": "command_logs/command_11/debug_annotated.png"
+}

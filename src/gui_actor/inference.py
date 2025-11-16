@@ -244,13 +244,36 @@ def inference(conversation, model, tokenizer, data_processor, logits_processor=N
     inputs = inputs.to(model.device)
 
     # generate
-    results = model.generate(**inputs,
-                            max_new_tokens=2048 if not use_placeholder else 1,
-                            logits_processor=LogitsProcessorList([logits_processor]),
-                            return_dict_in_generate=True,
-                            output_hidden_states=True
-                            )
+    try:
+        # Clear MPS cache before generation if using MPS
+        if str(model.device).startswith('mps'):
+            torch.mps.empty_cache()
+        
+        results = model.generate(**inputs,
+                                max_new_tokens=2048 if not use_placeholder else 1,
+                                logits_processor=LogitsProcessorList([logits_processor]),
+                                return_dict_in_generate=True,
+                                output_hidden_states=True,
+                                output_scores=True,  # Ensure scores are returned
+                                )
+        
+        # Clear MPS cache after generation
+        if str(model.device).startswith('mps'):
+            torch.mps.empty_cache()
+            
+    except Exception as e:
+        # Clear cache on error
+        if str(model.device).startswith('mps'):
+            torch.mps.empty_cache()
+        raise RuntimeError(f"Model generation failed: {str(e)}. This may be due to memory issues on MPS device.")
 
+    # Check if generation succeeded
+    if results is None:
+        raise RuntimeError("Model generation returned None - possible memory issue")
+    if not hasattr(results, 'sequences') or results.sequences is None:
+        raise RuntimeError("Model generation failed - no sequences returned")
+    if not hasattr(results, 'hidden_states') or results.hidden_states is None or len(results.hidden_states) == 0:
+        raise RuntimeError("Model generation failed - no hidden states returned")
 
     # decode the generated ids
     input_ids = inputs["input_ids"][0]
@@ -270,8 +293,16 @@ def inference(conversation, model, tokenizer, data_processor, logits_processor=N
     
     # otherwise, get the coordinate from the action head
     if use_placeholder:
+        if len(results.hidden_states) == 0:
+            raise RuntimeError("Hidden states list is empty")
+        if len(results.hidden_states[0]) == 0:
+            raise RuntimeError("Hidden states first element is empty")
+        if results.hidden_states[0][-1] is None or len(results.hidden_states[0][-1]) == 0:
+            raise RuntimeError("Hidden states structure is invalid - last layer is None or empty")
         decoder_hidden_states = results.hidden_states[0][-1][0] # n_all_input_tokens, hidden_size
     else:
+        if len(results.hidden_states) <= 1:
+            raise RuntimeError(f"Hidden states has insufficient length: {len(results.hidden_states)}")
         decoder_hidden_states = [step_hidden_states[-1][0] for step_hidden_states in results.hidden_states[1:]]
         decoder_hidden_states = torch.cat(decoder_hidden_states, dim=0) # seq_len_generated_ids-1, hidden_size
     decoder_hidden_states = decoder_hidden_states[pointer_pad_mask] # n_pointer_pad_tokens, hidden_size
