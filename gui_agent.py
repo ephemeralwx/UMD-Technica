@@ -481,7 +481,7 @@ def move_and_click(x, y, screenshot_size=None, show_visual=True):
             scale_y = screen_height / screenshot_height
             
             pixel_x = int(screenshot_x * scale_x * SCREEN_SCALE)
-            pixel_y = int(screenshot_y * scale_y * SCREEN_SCALE) + 2  # Offset correction
+            pixel_y = int(screenshot_y * scale_y * SCREEN_SCALE)
             
             log_status(f"   Screenshot coords: ({screenshot_x:.1f}, {screenshot_y:.1f})")
             log_status(f"   Scale factors: ({scale_x:.3f}, {scale_y:.3f})")

@@ -1,18 +1,30 @@
 Command #2
 ============================================================
 
-Command: Type 'effects of mental health'
-Timestamp: 2025-11-16T00:07:28.581649
+Command: Click on the search or enter website name bar at the top of the screen
+Timestamp: 2025-11-16T00:30:07.189750
 
 Parsed Action:
-  Type: type
-  text: effects of mental health
+  Type: click
+  target: Click on the search or enter website name bar at the top of the screen
+
+VLM Request:
+  Instruction: Click on the search or enter website name bar at the top of the screen
+  Screenshot Size: 768x498
+
+Predicted Points:
+  #1: (0.5348, 0.0673)
+
+Selected Point:
+  Normalized: (0.5348, 0.0673)
+  Pixel: (410, 33)
 
 Execution Result:
   Success: True
-  Action Type: type
-  Details: Typed: effects of mental health
+  Action Type: click
+  Details: Clicked at (410, 33)
 
 Files:
   - screenshot.png: Original screenshot sent to VLM
+  - debug_annotated.png: Screenshot with predicted points marked
   - command_log.json: Complete log data in JSON format

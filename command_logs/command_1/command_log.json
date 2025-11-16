@@ -1,14 +1,14 @@
 {
   "command_number": 1,
-  "command_text": "Click on the search or enter website name bar at the top of the screen",
-  "timestamp": "2025-11-16T00:07:16.250123",
+  "command_text": "Click on the ChatGPT card in the middle left of the screen",
+  "timestamp": "2025-11-16T00:29:46.136035",
   "parsed_action": {
     "type": "click",
-    "target": "Click on the search or enter website name bar at the top of the screen"
+    "target": "Click on the ChatGPT card in the middle left of the screen"
   },
   "screenshot_path": "command_logs/command_1/screenshot.png",
   "vlm_request": {
-    "instruction": "Click on the search or enter website name bar at the top of the screen",
+    "instruction": "Click on the ChatGPT card in the middle left of the screen",
     "screenshot_size": "768x498",
     "model": "microsoft/GUI-Actor-2B-Qwen2-VL",
     "topk": 3
@@ -16,47 +16,31 @@
   "vlm_response": {
     "topk_points": [
       {
-        "x": 0.2802359162374218,
-        "y": 0.05791843534143263
-      },
-      {
-        "x": 0.6481481481481481,
-        "y": 0.08333333333333333
-      },
-      {
-        "x": 0.5553821611874047,
-        "y": 0.08333333333333333
+        "x": 0.18787996621593372,
+        "y": 0.5226349062993904
       }
     ]
   },
   "predicted_points": [
     {
-      "x": 0.2802359162374218,
-      "y": 0.05791843534143263
-    },
-    {
-      "x": 0.6481481481481481,
-      "y": 0.08333333333333333
-    },
-    {
-      "x": 0.5553821611874047,
-      "y": 0.08333333333333333
+      "x": 0.18787996621593372,
+      "y": 0.5226349062993904
     }
   ],
   "selected_point": {
     "normalized": {
-      "x": 0.2802359162374218,
-      "y": 0.05791843534143263
+      "x": 0.18787996621593372,
+      "y": 0.5226349062993904
     },
     "pixel": {
-      "x": 215,
-      "y": 28
+      "x": 144,
+      "y": 260
     }
   },
   "execution_result": {
     "success": true,
     "action_type": "click",
-    "details": "Clicked at (215, 28)"
+    "details": "Clicked at (144, 260)"
   },
   "errors": [],
   "debug_screenshot_path": "command_logs/command_1/debug_annotated.png"

@@ -1,47 +1,21 @@
 {
   "command_number": 3,
-  "command_text": "Click on the Google suggestion 'effects of mental health' in the top middle of the screen",
-  "timestamp": "2025-11-16T00:07:35.191265",
+  "command_text": "Type 'ChatGPT'",
+  "timestamp": "2025-11-16T00:30:27.790649",
   "parsed_action": {
-    "type": "click",
-    "target": "Click on the Google suggestion 'effects of mental health' in the top middle of the screen"
+    "type": "type",
+    "text": "ChatGPT"
   },
-  "screenshot_path": "command_logs/command_3/screenshot.png",
-  "vlm_request": {
-    "instruction": "Click on the Google suggestion 'effects of mental health' in the top middle of the screen",
-    "screenshot_size": "768x498",
-    "model": "microsoft/GUI-Actor-2B-Qwen2-VL",
-    "topk": 3
-  },
-  "vlm_response": {
-    "topk_points": [
-      {
-        "x": 0.5073253203728805,
-        "y": 0.2427009545108505
-      }
-    ]
-  },
-  "predicted_points": [
-    {
-      "x": 0.5073253203728805,
-      "y": 0.2427009545108505
-    }
-  ],
-  "selected_point": {
-    "normalized": {
-      "x": 0.5073253203728805,
-      "y": 0.2427009545108505
-    },
-    "pixel": {
-      "x": 389,
-      "y": 120
-    }
-  },
+  "screenshot_path": null,
+  "vlm_request": null,
+  "vlm_response": null,
+  "predicted_points": [],
+  "selected_point": null,
   "execution_result": {
     "success": true,
-    "action_type": "click",
-    "details": "Clicked at (389, 120)"
+    "action_type": "type",
+    "details": "Typed: ChatGPT"
   },
   "errors": [],
-  "debug_screenshot_path": "command_logs/command_3/debug_annotated.png"
+  "debug_screenshot_path": null
 }
